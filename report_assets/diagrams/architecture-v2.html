@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #fff; }
+  body { font-family: Arial, Helvetica, sans-serif; color: #172033; }
+  .canvas { width: 1000px; height: 790px; padding: 16px 22px 18px; }
+  h1 { margin: 0 0 16px; font-size: 24px; text-align: center; letter-spacing: .2px; }
+  h1 span { color: #2563eb; }
+  .tier { border: 2px dashed #94a3b8; border-radius: 14px; padding: 14px 16px 16px; position: relative; background: #f8fafc; }
+  .tier-label { position: absolute; top: -11px; left: 18px; background: #fff; padding: 1px 9px; font-size: 13px; font-weight: bold; color: #334155; letter-spacing: .3px; }
+  .tier.client { background: #f5f9ff; border-color: #93c5fd; }
+  .tier.app { background: #f7fdf9; border-color: #86efac; }
+  .tier.data { background: #fffaf4; border-color: #fdba74; }
+  .row { display: grid; gap: 12px; grid-template-columns: repeat(3, 1fr); }
+  .card { background: #fff; border: 1.6px solid #cbd5e1; border-radius: 10px; padding: 10px 12px; }
+  .card h3 { margin: 0 0 4px; font-size: 17px; }
+  .card p { margin: 0; font-size: 15px; line-height: 1.35; color: #475569; }
+  .card ul { margin: 3px 0 0; padding-left: 16px; font-size: 15px; line-height: 1.35; color: #475569; }
+  .client .card { border-color: #bfdbfe; }
+  .client .card h3 { color: #1d4ed8; }
+  .app .card { border-color: #bbf7d0; }
+  .app .card h3 { color: #047857; }
+  .pill { display: inline-block; margin-top: 5px; font-size: 12.5px; font-weight: bold; color: #1e40af; background: #dbeafe; padding: 2px 7px; border-radius: 16px; }
+  .db { display: flex; align-items: center; gap: 14px; padding: 10px 14px; border: 1.6px solid #fdba74; background: #fffdfa; border-radius: 10px; }
+  .db .cyl { width: 42px; height: 52px; flex: none; }
+  .db b { font-size: 16px; display: block; }
+  .db small { font-size: 13.5px; color: #475569; display: block; margin-top: 2px; }
+  .tables { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 5px; }
+  .tables span { font-size: 13px; background: #ffedd5; color: #9a3412; border: 1px solid #fdba74; border-radius: 5px; padding: 2px 7px; font-weight: bold; }
+  .arrow { display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 13.5px; color: #475569; height: 46px; }
+  .arrow .line { flex: 0 0 70px; height: 2px; background: #64748b; position: relative; }
+  .arrow .line::after { content: ''; position: absolute; right: -1px; top: -5px; border-left: 9px solid #64748b; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+  .arrow.down { flex-direction: column; gap: 1px; }
+  .arrow.down .line { width: 2px; height: 18px; flex: none; }
+  .arrow.down .line::after { right: -5px; top: auto; bottom: -1px; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 8px solid #64748b; border-bottom: 0; }
+  .arrow .label { background: #fff; border: 1px solid #cbd5e1; border-radius: 16px; padding: 3px 12px; font-weight: bold; color: #334155; }
+  .note { text-align: center; font-size: 12.5px; color: #64748b; margin-top: 9px; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <h1>SOFTWARE ARCHITECTURE: <span>STOCKFLOW</span> INVENTORY MANAGEMENT SYSTEM</h1>
+
+  <div class="tier client">
+    <div class="tier-label">CLIENT TIER — Web Browser</div>
+    <div class="row">
+      <div class="card">
+        <h3>React 19 SPA</h3>
+        <p>Vite + TypeScript single-page application. Ten operational screens in one shell.</p>
+        <span class="pill">localhost:5173</span>
+      </div>
+      <div class="card">
+        <h3>Operations UI</h3>
+        <ul>
+          <li>Dashboard and alerts</li>
+          <li>Catalogue and stock forms</li>
+          <li>Transactions, reports, users</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Axios REST client</h3>
+        <p>JSON over HTTP to <b>/api</b>. Loading states, error messages and refresh actions.</p>
+        <span class="pill">REST / JSON</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow down"><span class="line"></span><span class="label">HTTP request · JSON payload · CORS</span></div>
+
+  <div class="tier app">
+    <div class="tier-label">APPLICATION TIER — FastAPI (Python)</div>
+    <div class="row">
+      <div class="card">
+        <h3>FastAPI REST API</h3>
+        <ul>
+          <li>Eight functional routers</li>
+          <li>Pydantic request validation</li>
+          <li>Unified error responses</li>
+        </ul>
+        <span class="pill">127.0.0.1:8000</span>
+      </div>
+      <div class="card">
+        <h3>Auth &amp; access control</h3>
+        <ul>
+          <li>bcrypt password hashes</li>
+          <li>JWT (HS256) sessions</li>
+          <li>ADMIN / STAFF roles</li>
+          <li>Demo-session fallback</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Services &amp; ORM</h3>
+        <ul>
+          <li>Inventory rules and audit</li>
+          <li>Dashboard aggregation</li>
+          <li>Four operational reports</li>
+          <li>SQLAlchemy sessions</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow down"><span class="line"></span><span class="label">SQLAlchemy ORM · SQL queries · transactions</span></div>
+
+  <div class="tier data">
+    <div class="tier-label">DATA TIER — SQLite</div>
+    <div class="db">
+      <svg class="cyl" viewBox="0 0 60 70" fill="none">
+        <ellipse cx="30" cy="12" rx="24" ry="9" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+        <path d="M6 12v46c0 5 10.7 9 24 9s24-4 24-9V12" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+        <ellipse cx="30" cy="12" rx="24" ry="9" fill="#fed7aa" stroke="#ea580c" stroke-width="2"/>
+        <path d="M6 30c0 5 10.7 9 24 9s24-4 24-9M6 46c0 5 10.7 9 24 9s24-4 24-9" stroke="#ea580c" stroke-width="1.4" opacity=".7"/>
+      </svg>
+      <div>
+        <b>stockflow.db · SQLite database</b>
+        <small>Foreign keys enabled; tables created automatically; seed script for demonstration data.</small>
+        <div class="tables">
+          <span>users</span><span>categories</span><span>suppliers</span>
+          <span>products</span><span>transactions</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">Presentation, business logic and persistence are separated so each layer can be replaced independently.</div>
+</div>
+</body>
+</html>

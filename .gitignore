@@ -1,0 +1,70 @@
+# ---------------------------------------------------------------- Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments (the bundled backend/venv is machine-specific)
+venv/
+.venv/
+env/
+ENV/
+
+# Test / tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ---------------------------------------------------------------- Node
+node_modules/
+dist/
+dist-ssr/
+.vite/
+*.tsbuildinfo
+
+# ---------------------------------------------------------------- Environment
+.env
+.env.*
+!.env.example
+
+# ---------------------------------------------------------------- Databases
+# A seeded demo database is committed for convenience; ignore every other one.
+*.db
+*.sqlite
+*.sqlite3
+!backend/stockflow.db
+
+# ---------------------------------------------------------------- Logs & scratch
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+frontend/build_*.txt
+reports/_preview_pages/
+reports/*.docx.lock
+~$*.docx
+
+# ---------------------------------------------------------------- Editors / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
